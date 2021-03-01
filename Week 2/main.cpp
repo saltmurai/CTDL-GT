@@ -56,7 +56,8 @@ class Queue
     Stack<T> s1, s2;
 
 public:
-    Queue() {
+    Queue()
+    {
         s1.initialize();
         s2.initialize();
     }
@@ -90,6 +91,24 @@ public:
         return K;
     }
 };
+void decimal_to_binary(int x)
+{
+    Stack<int> stk;
+    stk.initialize();
+    while (x > 0)
+    {
+        int remainder = x % 2;
+        x = x / 2;
+        stk.push(remainder);
+    }
+    while (!stk.is_empty())
+    {
+        int item;
+        item = stk.top();
+        stk.pop();
+        cout << item;
+    }
+}
 int main()
 {
     Stack<int> stack1;
@@ -109,4 +128,10 @@ int main()
     cout << "Queue test: " << endl;
     for (int i = 0; i < 3; ++i)
         cout << queue1.de_queue() << endl;
+
+    int n;
+    cout << "Enter a decimal number: ";
+    cin >> n;
+    cout << "Binary is: ";
+    decimal_to_binary(n); 
 }
