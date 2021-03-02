@@ -91,6 +91,7 @@ public:
         return K;
     }
 };
+
 void decimal_to_binary(int x)
 {
     Stack<int> stk;
