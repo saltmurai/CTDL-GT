@@ -6,12 +6,12 @@ using namespace std;
 class Student {
 public:
     string name;
-    int age;
-    float gpa;
-    Student(string name, int age, float gpa) {
-        this->name = name;
-        this->age = age;
-        this->gpa = gpa;
+    string clas;
+    int mssv;
+    Student(string _name, string _clas, int _mssv) {
+        this->name = _name;
+        this->clas = _clas;
+        this->mssv = _mssv;
     }
 };
 
@@ -32,11 +32,8 @@ public:
     LinkedList() {
         head = null;
     }
-    int getSize() {
-        return size;
-    }
-    void append(string name, int age, float gpa) {
-        Student *stud = new Student(name, age, gpa);
+    void insert_front(string name, string clas, int mssv) {
+        Student *stud = new Student(name, clas, mssv);
         Node *temp = new Node(stud);
         temp->next = nullptr;
         if(head == nullptr) {
@@ -48,53 +45,45 @@ public:
         }
 
     }
-    void insert_back(string name, int age, float gpa) {
-        Student *stud = new Student(name, age, gpa);
+    void insert_back(string name, string clas, int mssv) {
+        Student *stud = new Student(name, clas, mssv);
         Node *temp = new Node(stud);
-        temp->next = NULL;
+        temp->next = nullptr;
         //Tao node p = head de di chuyen den cuoi danh sach
-        p = head;
+        Node *p = head;
         while(p->next != NULL) {
             p = p->next;
         }
         //temp la node can them vao, temp->next = Null, p->next = temp
         p->next = temp;
         }
-
-    void removeStu(string name) {
-        if(head != null) {
-            Node *current = head;
-            if(current->stu->name == name) {
-                delete current;
-            } else {
-                while(current != null) {
-                    if(current->next->stu->name == name) {
-                        current->next = current->next->next;
-                        break;
-                    } else {
-                        current = current->next;
-                    }
-                }
-            }
-            size--;
-        }
-    }
-    void removeHead() {
-        if(head != null) {
-            Node *current = head;
-            head = head->next;
-            delete current;
-            size--;
-        }
-    }
     void display() {
         Node *current = head;
+        int i = 1;
         while(current != null) {
-            cout << current->stu->name << ", " << current->stu->age << ", " << current->stu->gpa << endl;
+
+            cout <<"No." << i++ << ": " <<  current->stu->name << ", " << current->stu->clas << ", " << current->stu->mssv << endl;
             current = current->next;
         }
-        cout << "*" << getSize() << endl;
-        cout << endl;
+    }
+    void del(string _name) {
+        Node *p = head;
+        while(p->next->stu->name != _name) {
+            p = p->next;
+        }
+        Node *temp;
+        temp = p->next;
+        p->next = temp->next;
+        delete[] temp;
+    }
+    bool search(string _name) {
+        Node *p = head;
+        while(p != nullptr) {
+            if(p->stu->name == _name) return 1;
+            p = p->next;
+        }
+        return 0;
+        
     }
 
     void destroy() {
@@ -105,8 +94,6 @@ public:
             head = current;
         }
         head = null;
-        tail = null;
-        size = 0;
     }
     ~LinkedList() {
         destroy();
@@ -115,6 +102,17 @@ public:
 
 int main() {
     LinkedList list;
-    list.run();
+    list.insert_front("Sang", "ET1-01", 20183965);
+    list.insert_front("San", "ET1-01", 20193076);
+    list.insert_front("Sa", "ET1-02", 20193432);
+    list.insert_back("Ted", "ET1-03", 20193842);
+    list.display();
+    cout << "\nDanh sach sau khi xoa hoc sinh Sang" << endl;
+    list.del("Sang");
+    list.display();
+
+    cout << "\nTim hoc sinh ten San trong danh sach: " << endl;
+    if(list.search("San")) cout << "Co trong danh sach" << endl;
+    else cout << "Khong co trong danh sach" << endl;
     return 0;
 }
