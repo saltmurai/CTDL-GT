@@ -1,5 +1,6 @@
 # Week 5
-Lam lai danh sach sinh vien (C++)
-Danh sach moc noi don dung head, tail
-Vo bai tap
-Cai dat Queue = LTMN
+<ol>
+<li>double_ended_queue</li>
+<li>circular_queue</li>
+<li>priority_queue</li>
+</ol>
