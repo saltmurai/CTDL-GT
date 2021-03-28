@@ -61,7 +61,7 @@ public:
             cout << p->data << "    ";
             p = p->next;
         }
-        cout << "\n";
+        c
     }
 };
 
