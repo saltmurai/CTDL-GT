@@ -121,6 +121,7 @@ public:
             head = head->next;
             temp->next = nullptr;
             delete temp;
+            return;
         }
         while(p->next->data.get_id() != id) {
             p = p->next;
@@ -145,7 +146,7 @@ int main() {
     list.show();
     cout << endl;
     cout << "Sau khi xoa test" << endl;
-    list.delete_course("test");
+    list.delete_course("ET2060");
     list.show();
     return 0;
 }
