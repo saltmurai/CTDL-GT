@@ -7,3 +7,5 @@
 - Assignment 6(done)
 - Assignment 7(almost done - fixing)
 - Assignment 8(working on)
+- Assignment 9(done)
+- Assignment 10(half)

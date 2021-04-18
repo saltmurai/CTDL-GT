@@ -67,7 +67,7 @@ public:
 
         //khi add them 1 node vao danh sach, danh sach da duoc sap xep san
         else {
-            //Neu node them vao nho hon head ta them nhu bth
+            //Neu node them vao nho hon head them nhu bth
             if(x.get_credit() < head->data.get_credit()) {
                 temp->next = head;
                 head = temp;
