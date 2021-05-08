@@ -57,7 +57,6 @@ Node* create_node(Student s) {
     temp->left = temp->right = nullptr;
     return temp; 
 }
-
 Node* search_tree(Node* root, Student s) {
     if(root == nullptr) {
         return nullptr;
